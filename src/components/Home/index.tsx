@@ -55,8 +55,8 @@ const Home: React.FC = () => {
           <span className="line-through text-gray-700">WORK</span> PASSION
           LOGGER
         </h1>
-        <div className="flex gap-20 w-full">
-          <div className="card w-1/2 xl:w-8/12 bg-base-100 shadow-xl">
+        <div className="flex gap-10 w-full flex-col md:flex-row">
+          <div className="card w-full md:w-1/2 xl:w-8/12 bg-base-100 shadow-xl">
             <div className="card-body gap-10">
               <DayDropDown
                 openDropDown={openDropDown}
@@ -72,7 +72,7 @@ const Home: React.FC = () => {
               />
             </div>
           </div>
-          <div className="card w-1/2 xl:w-4/12 bg-base-100 shadow-xl">
+          <div className="card w-full md:w-1/2 xl:w-4/12 bg-base-100 shadow-xl">
             <div className="card-actions items-end flex flex-col justify-center m-5 ">
               <button
                 className="btn btn-primary w-24"
