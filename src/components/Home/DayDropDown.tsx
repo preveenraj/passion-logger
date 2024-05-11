@@ -39,9 +39,9 @@ return (
                     <li
                         key={value}
                         onClick={() => {
-                            const elem = document.activeElement;
-                            if(elem){
-                              elem?.blur();
+                            const elem = document.activeElement as HTMLInputElement;
+                            if (elem) {
+                                elem.blur();
                             }
                             setOpenDropDown(false);
                             setActiveDay(value);

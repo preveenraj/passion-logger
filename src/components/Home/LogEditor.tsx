@@ -4,7 +4,6 @@ import MainTextArea from "./MainTextArea";
 import FooterTextArea from "./FooterTextArea";
 
 import { defaultLogs, Day } from "@/constants/logConstants";
-import { text } from "stream/consumers";
 
 interface LogEditorProps {
   setLogText: (value: string) => void;
@@ -47,25 +46,25 @@ const LogEditor: FC<LogEditorProps> = ({ dayConfig, setLogText }) => {
     });
   };
 
-  const generateText = () => {
-    const textAray = [
-      headerText,
-      mainText
-      .split("\n")
-      .map((text) => `${(text && !text.startsWith('#') ? '-' : '')} ${toUpperCase(text)}${text && !text.startsWith('#') && !text.endsWith(".") ? '.' : ''}`)
-      .join("\n"),
-      footerText,
-      Object.entries(footerOptions)
-        .filter(([_, text]) => text)
-        .map(([_, text]) => `* ${text}`)
-        .join("\n"),
-    ];
-    setLogText(textAray.join("\n"));
-  };
 
   useEffect(() => {
+    const generateText = () => {
+        const textAray = [
+        headerText,
+        mainText
+        .split("\n")
+        .map((text) => `${(text && !text.startsWith('#') ? '-' : '')} ${toUpperCase(text)}${text && !text.startsWith('#') && !text.endsWith(".") ? '.' : ''}`)
+        .join("\n"),
+        footerText,
+        Object.entries(footerOptions)
+            .filter(([_, text]) => text)
+            .map(([_, text]) => `* ${text}`)
+            .join("\n"),
+        ];
+        setLogText(textAray.join("\n"));
+    };
     generateText();
-  }, [headerText, mainText, footerText, footerOptions]);
+  }, [setLogText, headerText, mainText, footerText, footerOptions]);
 
   return (
     <div className="flex flex-col gap-5">
