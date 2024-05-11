@@ -61,7 +61,7 @@ const LogEditor: FC<LogEditorProps> = ({ dayConfig, setLogText }) => {
             .map(([_, text]) => `* ${text}`)
             .join("\n"),
         ];
-        setLogText(textAray.join("\n"));
+        setLogText(textAray.filter((text) => text).join("\n"));
     };
     generateText();
   }, [setLogText, headerText, mainText, footerText, footerOptions]);
