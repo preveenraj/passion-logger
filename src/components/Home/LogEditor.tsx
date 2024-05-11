@@ -56,12 +56,13 @@ const LogEditor: FC<LogEditorProps> = ({ dayConfig, setLogText }) => {
         .map((text) => `${(text && !text.startsWith('#') ? '-' : '')} ${toUpperCase(text)}${text && !text.startsWith('#') && !text.endsWith(".") ? '.' : ''}`)
         .join("\n"),
         footerText,
+        " ",
         Object.entries(footerOptions)
             .filter(([_, text]) => text)
             .map(([_, text]) => `* ${text}`)
             .join("\n"),
         ];
-        setLogText(textAray.filter((text) => text).join("\n"));
+        setLogText(textAray.filter((text) => text).map((text) => text.trim()).join("\n"));
     };
     generateText();
   }, [setLogText, headerText, mainText, footerText, footerOptions]);
