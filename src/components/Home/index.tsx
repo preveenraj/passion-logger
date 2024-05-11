@@ -96,7 +96,7 @@ const Home: React.FC = () => {
       </div>
       <div
         className={classNames(
-          "alert alert-success w-max absolute opacity-0 top-10 left-10 transition-all duration-300 ease-in-out",
+          "alert alert-success w-max fixed opacity-0 top-10 left-10 transition-all duration-300 ease-in-out",
           { "opacity-100": isCopying }
         )}
       >

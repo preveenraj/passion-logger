@@ -1,8 +1,8 @@
 
 const defaultLogs: { [key: string]: string } = {
-  hadDiscussinsWithRob: "Discussions with Rob on current tasks",
-  brightSync: "Sync with Bright Dev Team",
-  eidosSync: "Sync with Eidos Team",
+  hadDiscussionsWithRob: "Discussions with Rob on current tasks.",
+  brightSync: "Sync with Bright Dev Team.",
+  eidosSync: "Sync with Eidos Team.",
 };
 
 type Day = {
@@ -10,7 +10,7 @@ type Day = {
   header?: string;
   footer?: string;
   footerOptions: {
-    hadDiscussinsWithRob: string;
+    hadDiscussionsWithRob: string;
     brightSync?: string;
     eidosSync?: string;
   };
@@ -22,14 +22,14 @@ const days: Day[] = [
     header: "",
     footer: "",
     footerOptions: {
-      hadDiscussinsWithRob: defaultLogs.hadDiscussinsWithRob,
+      hadDiscussionsWithRob: defaultLogs.hadDiscussionsWithRob,
     },
   },
   {
     value: "Tuesday",
     header: ``,
     footerOptions: {
-      hadDiscussinsWithRob: defaultLogs.hadDiscussinsWithRob,
+      hadDiscussionsWithRob: defaultLogs.hadDiscussionsWithRob,
       brightSync: defaultLogs.brightSync,
       eidosSync: defaultLogs.eidosSync,
     },
@@ -37,19 +37,19 @@ const days: Day[] = [
   {
     value: "Wednesday",
     footerOptions: {
-      hadDiscussinsWithRob: defaultLogs.hadDiscussinsWithRob,
+      hadDiscussionsWithRob: defaultLogs.hadDiscussionsWithRob,
     },
   },
   {
     value: "Thursday",
     footerOptions: {
-      hadDiscussinsWithRob: defaultLogs.hadDiscussinsWithRob,
+      hadDiscussionsWithRob: defaultLogs.hadDiscussionsWithRob,
     },
   },
   {
     value: "Friday",
     footerOptions: {
-      hadDiscussinsWithRob: defaultLogs.hadDiscussinsWithRob,
+      hadDiscussionsWithRob: defaultLogs.hadDiscussionsWithRob,
     },
   },
 ];

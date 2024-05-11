@@ -27,33 +27,33 @@ const FooterTextArea: React.FC<FooterTextAreaProps> = ({
           setFooterText(event.target.value);
         }}
       />
-      {Object.entries(options).map(([key, value]) => {
-        return (
-          <div className="" key={key}>
-            <div className="form-control w-max">
-              <label className="label cursor-pointer flex gap-2">
-                <span className="label-text">Disc. with Rob?</span>
-                <input
-                  type="checkbox"
-                  checked={!!value}
-                  className="checkbox checkbox-primary"
-                  onChange={() => toggleOption(key)}
+      <div className="flex flex-col gap-2 mt-4">
+        {Object.entries(options).map(([key, value]) => {
+          return (
+            <div className="" key={key}>
+              <div className="flex gap-2 items-center">
+                <div className="flex w-12 justify-center">
+                  <input
+                    type="checkbox"
+                    checked={!!value}
+                    className="checkbox checkbox-primary checkbox-lg"
+                    onChange={() => toggleOption(key)}
+                  />
+                </div>
+                <textarea
+                  className="textarea textarea-bordered textarea-lg w-full h-16 grey-500"
+                  placeholder={key}
+                  disabled={!value}
+                  value={value}
+                  onChange={(event: ChangeEvent<HTMLTextAreaElement>) => {
+                    onChangeOption(key, event.target.value);
+                  }}
                 />
-              </label>
+              </div>
             </div>
-            {value && (
-              <textarea
-                className="textarea textarea-bordered textarea-lg w-full h-16"
-                placeholder="footer..."
-                value={value}
-                onChange={(event: ChangeEvent<HTMLTextAreaElement>) => {
-                  onChangeOption(key, event.target.value);
-                }}
-              />
-            )}
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };
