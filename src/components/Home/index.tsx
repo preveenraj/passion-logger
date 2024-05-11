@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { HotKeys } from "react-hotkeys";
+import { GlobalHotKeys } from "react-hotkeys";
 import copy from "copy-to-clipboard";
 import dayjs from "dayjs";
 
@@ -33,8 +33,8 @@ const Home: React.FC = () => {
 
   const handlers = {
     COPY: (e: any) => {
-      setIsHotkey(true);
       e.preventDefault();
+      setIsHotkey(true);
       copyHandler();
     },
   };
@@ -49,7 +49,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <HotKeys keyMap={keyMap} handlers={handlers} allowChanges>
+    <GlobalHotKeys keyMap={keyMap} handlers={handlers} allowChanges>
       <div className="flex flex-col w-full justify-center items-center gap-10">
         <h1 className="text-8xl">
           <span className="line-through text-gray-700">WORK</span> PASSION
@@ -102,7 +102,7 @@ const Home: React.FC = () => {
       >
         <span>Passion Absorbed Successfully.</span>
       </div>
-    </HotKeys>
+    </GlobalHotKeys>
   );
 };
 
