@@ -1,6 +1,11 @@
 "use client";
 
 import Home from "@/components/Home";
+import { configure } from "react-hotkeys";
+
+configure({
+  ignoreTags: ["TEXTAREA"],
+});
 
 export default function App() {
   return (
