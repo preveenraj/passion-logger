@@ -10,14 +10,14 @@ const MainTextArea: React.FC<MainTextAreaProps> = ({
   setMainText,
 }) => {
   return (
-    <div className="">
+    <div className="w-full">
       <textarea
         autoFocus
         value={mainText}
         onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
           setMainText(e.target.value)
         }
-        className="textarea textarea-info textarea-lg w-full h-48"
+        className="textarea textarea-info textarea-lg w-full min-h-48"
         placeholder="Start typing..."
       ></textarea>
     </div>

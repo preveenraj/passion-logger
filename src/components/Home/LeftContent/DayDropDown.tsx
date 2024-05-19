@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import classNames from "classnames";
-import { days } from "../../constants/logConstants";
+import { days } from "../../../constants/logConstants";
 
 interface DayDropDownProps {
     openDropDown: boolean;
