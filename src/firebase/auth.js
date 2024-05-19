@@ -1,6 +1,7 @@
 import {
   onAuthStateChanged as _onAuthStateChanged,
   signInWithPopup,
+  signOut as _signOut,
 } from "firebase/auth";
 import { auth, provider } from "./config";
 
@@ -16,8 +17,19 @@ async function signIn() {
   return { result, error };
 }
 
+async function signOut() {
+  let error = null;
+  try {
+    await _signOut(auth);
+  } catch (e) {
+    error = e;
+  }
+
+  return { error };
+}
+
 function onAuthStateChanged(cb) {
   return _onAuthStateChanged(auth, cb);
 }
 
-export { signIn, onAuthStateChanged };
+export { signIn, onAuthStateChanged, signOut };

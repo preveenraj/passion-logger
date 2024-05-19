@@ -26,62 +26,80 @@ const RightContent: React.FC<Props> = ({
 
   useEffect(() => {
     if (user) {
-        setScratchText(user.scratchPad);
+      setScratchText(user.scratchPad);
     }
   }, [user]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="w-full md:w-1/2 xl:w-4/12 grid place-content-center">
+        <span className="loading loading-infinity loading-lg"></span>
+      </div>
+    );
   }
 
   return (
     <div className="card w-full md:w-1/2 xl:w-4/12 bg-base-100 shadow-xl">
-      <div role="tablist" className="tabs tabs-boxed m-10">
-        <button
-          role="tab"
-          className={classNames("tab", {
-            "tab-active": activeTab === "scratch_pad",
-          })}
-          onClick={() => setActiveTab("scratch_pad")}
-        >
-          Scratch Pad
-        </button>
-        <button
-          role="tab"
-          className={classNames("tab", {
-            "tab-active": activeTab === "preview",
-          })}
-          onClick={() => setActiveTab("preview")}
-        >
-          Preview
-        </button>
-      </div>
-      {activeTab === "scratch_pad" ? (
-        <div className="card-actions h-full m-5">
-          <ScratchPad
-            scratchText={scratchText}
-            setScratchText={setScratchText}
-          />
-        </div>
-      ) : (
-        <div className="card-actions  m-5">
-          <div className="items-end flex flex-col justify-center w-full">
-            <button className="btn btn-primary w-24" onClick={() => signIn()}>
-              {`Absorb${isCopying ? "ed" : ""}!!`}
-            </button>
-            <div
-              className={classNames(
-                "flex gap-2 items-center",
-                { "text-gray-500": !isHotkey },
-                { "text-green-500": isHotkey }
-              )}
+      {user ? (
+        <>
+          <div role="tablist" className="tabs tabs-boxed m-10">
+            <button
+              role="tab"
+              className={classNames("tab", {
+                "tab-active": activeTab === "scratch_pad",
+              })}
+              onClick={() => setActiveTab("scratch_pad")}
             >
-              <kbd className="kbd-xs">CMD</kbd>+<kbd className="kbd-xs">G</kbd>
+              Scratch Pad
+            </button>
+            <button
+              role="tab"
+              className={classNames("tab", {
+                "tab-active": activeTab === "preview",
+              })}
+              onClick={() => setActiveTab("preview")}
+            >
+              Preview
+            </button>
+          </div>
+          {activeTab === "scratch_pad" ? (
+            <div className="card-actions h-full m-5">
+              <ScratchPad
+                scratchText={scratchText}
+                setScratchText={setScratchText}
+              />
             </div>
-          </div>
-          <div className="card-body">
-            <pre className="text-base whitespace-pre-wrap">{logText}</pre>
-          </div>
+          ) : (
+            <div className="card-actions  m-5">
+              <div className="items-end flex flex-col justify-center w-full">
+                <button
+                  className="btn btn-primary w-24"
+                  onClick={() => copyHandler()}
+                >
+                  {`Absorb${isCopying ? "ed" : ""}!!`}
+                </button>
+                <div
+                  className={classNames(
+                    "flex gap-2 items-center",
+                    { "text-gray-500": !isHotkey },
+                    { "text-green-500": isHotkey }
+                  )}
+                >
+                  <kbd className="kbd-xs">CMD</kbd>+
+                  <kbd className="kbd-xs">G</kbd>
+                </div>
+              </div>
+              <div className="card-body">
+                <pre className="text-base whitespace-pre-wrap">{logText}</pre>
+              </div>
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="grid place-content-center h-full">
+          <button className="btn glass" onClick={() => signIn()}>
+            Login to Google
+          </button>
         </div>
       )}
     </div>
