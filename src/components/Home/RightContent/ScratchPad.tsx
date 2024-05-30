@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useEffect, useRef } from "react";
 
 interface ScratchPadProps {
   scratchText: string;
@@ -9,9 +9,18 @@ const ScratchPad: React.FC<ScratchPadProps> = ({
   scratchText,
   setScratchText,
 }) => {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.scrollTop = textareaRef.current.scrollHeight;
+    }
+  }, [textareaRef.current]);
+
   return (
     <div className="w-full h-full">
       <textarea
+        ref={textareaRef}
         autoFocus
         value={scratchText}
         onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
