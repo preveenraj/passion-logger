@@ -15,6 +15,7 @@ const Home: React.FC = () => {
   const [activeDay, setActiveDay] = useState(currentDay);
   const [isCopying, setIsCopying] = useState(false);
   const [isHotkey, setIsHotkey] = useState(false);
+  const [logText, setLogText] = useState("");
 
   useEffect(() => {
     if (openDropDown) {
@@ -24,7 +25,6 @@ const Home: React.FC = () => {
     }
   }, [openDropDown]);
 
-  const [logText, setLogText] = React.useState<string>("");
 
   const keyMap = {
     COPY: ["command+g", "ctrl+g"],

@@ -19,6 +19,10 @@ const LogEditor: FC<LogEditorProps> = ({ dayConfig, setLogText }) => {
   );
 
   useEffect(() => {
+    setHeaderText(dayConfig?.header || "");
+    setMainText("");
+    setFooterText(dayConfig?.footer || "");
+
     setFooterOptions(dayConfig?.footerOptions || {});
   }, [dayConfig]);
 
